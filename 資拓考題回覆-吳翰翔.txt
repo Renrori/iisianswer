@@ -1,0 +1,199 @@
+
+//1-Q1 2024-10-08(2)修改變數符合題目
+function sortUserName(user){
+	user.sort((a, b) => {
+   	 let nameA = a.firstName + (a.lastName || '') + a.customerID;
+   	 let nameB = b.firstName + (b.lastName || '') + b.customerID;
+   	 return nameA.localeCompare(nameB); 
+     //localeCompare需注意IDE預設環境
+  });
+
+  console.log(user); //打印至控制台
+}
+
+
+//1-Q2 2024-10-08(2)修改變數符合題目
+function sortByType(user) {
+    
+    const typeLevel = {
+        'systemAnalytics' : 5,
+        'engineer'  :4,
+        'productOwner' :3,
+        'freelancer' :2,
+        'student' : 1,
+    }
+
+    user.sort((a,b)=>{
+        return typeLevel[b.profession] - typeLevel[a.profession];
+    });
+
+    console.log(user);
+}
+
+
+//2-Q1 2024-10-08 css指定至1st list的ol層級
+去除相同的層級條件下，剩下來額外增加的指定屬性會提高優先度
+綠色指定li.item使其優先度高於.item的藍色而使藍色不生效
+修改條件範圍.container .shop-list .item => .container ol.shop-list .item  可使第一個列表觸發藍色的CSS敘述
+
+//2-Q2
+新增兩條CSS敘述處理單雙數
+.container .shop-list li:nth-child(odd) {
+    background-color: lightgreen
+  }
+  .container .shop-list li:nth-child(even) {
+    background-color: lightblue;
+  }
+  
+
+//3
+function getUniqueNumber (items) {
+    const showNumber = new Set(items);
+    console.log(showNumber);
+}
+
+//4
+<article>用於完整、獨立且可能被引用的主題區域</article>
+<section>用於分離區域目的</section>  
+<article>
+    <header>
+        <h1>商家平台</h1>
+    </header>
+
+        <!-- 商家列表 -->
+        <section>
+            <article>
+                <h3>商家 A</h3>
+                <p>商家A的相關描述</p>
+            </article>
+            <article>
+                <h3>商家 B</h3>
+                <p>商家B的相關描述</p>
+            </article>
+            <article>
+                <h3>商家 C</h3>
+                <p>商家C的相關描述</p>
+            </article>
+        </section>
+
+        <!-- 會員功能 -->
+        <section>
+            會員相關功能...
+        </section>
+</article>
+
+
+//5
+css模型由內至外分為context、padding、border、margin
+context為實際內容存在的區域
+padding為模型的邊框border到context內部隔開的區域
+border是模型的邊框
+margin是模型邊框與其他元素模型隔開的區域
+
+//6
+CSS優先度由大範圍至小範圍，由低優先至高優先度為基本規則
+依序由類型或標籤選擇器(Type) 類別選擇器(Class) ID選擇器來對應作用的優先度
+類型選擇器label{}會被類別選擇器.labelShow{}蓋過
+而這兩者都會被ID選擇器#labelShow{}蓋過
+另外直接在元素內敘述的style=""蓋過上述的敘述
+
+//7
+header 用來放置logo或網站主題，提供搜尋引擎搜索
+nav 敘述漢堡或橫幅之類的網站導航
+article 獨立且完整可被引用的主題或文章
+section 依據目的分離區域使用
+footer 頁底用來放置如聯絡資訊或使用者宣告之類的區域
+
+<!DOCTYPE html>
+<html lang="zh-en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>語意化 HTML 範例</title>
+</head>
+<body>
+
+    <header>
+        <h1>主題區域</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">假裝是首頁</a></li>
+                <li><a href="#about">沒有介紹的頁面</a></li>
+                <li><a href="#services">沒有服務</a></li>
+                <li><a href="#contact">無法聯絡</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section >
+        <h2>主題</h2>
+        <p>Lorem, ipsum dolor.</p>
+    </section>
+
+    <section >
+        <h2>假裝是服務</h2>
+        <article>
+            <h3>服務 1</h3>
+            <p>服務1說明</p>
+        </article>
+        <article>
+            <h3>服務 2</h3>
+            <p>服務2說明</p>
+        </article>
+    </section>
+
+    <footer>
+        <p>1234：info@example.com</p>
+        <p>© 2024 沒有版權</p>
+    </footer>
+
+</body>
+</html>
+
+//8
+<body style="display: flex; flex-direction: column; min-height: 100vh; margin: 0;">
+    <!-- HTML structure start -->
+    <header style="display: flex; justify-content: space-between; align-items: center; padding: 10px; border: 1px solid darkgrey;">
+        <div class="logo" style="width: 20%; border: 1px solid black;">
+            <p>假裝是LOGO</p>
+        </div>
+        <nav style="width: 80%; border: 1px solid black;">
+            <ul style="display: flex; list-style-type: none; padding: 0;">
+                <li style="margin-left: 20px;"><a href="#home">非首頁</a></li>
+                <li style="margin-left: 20px;"><a href="#products">沒商品</a></li>
+                <li style="margin-left: 20px;"><a href="#about">沒客服</a></li>
+                <li style="margin-left: 20px;"><a href="#contact">無法聯絡</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main style="flex: 1; display: flex; padding: 20px; justify-content: space-between; border: 1px solid black;">
+        <div class="item-photos" style="width: 50%; border: 1px solid black; padding: 10px;">
+            <h2>圖片滑動區域</h2>
+            <div class="slider">
+               
+            </div>
+        </div>
+
+        <div class="item-detail" style="width: 45%; display: flex; flex-direction: column; border: 1px solid black; padding: 10px;">
+            <div class="item-description">
+                <h2>虛假的敘述</h2>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Id, eius!</p>
+            </div>
+            <div class="item-desc-list" style="margin-top: 20px;">
+                <h3>不知道什麼列表</h3>
+                <ul>
+                    <li> 1</li>
+                    <li>2</li>
+                    <li> 3</li>
+                    <li> 4</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <footer style="text-align: center; padding: 10px; border: 1px solid black;">
+        <p>© 假網站 沒有版權</p>
+        <p>連絡不到: 1234@example.com</p>
+    </footer>
+</body>
